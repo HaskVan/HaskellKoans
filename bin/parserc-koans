@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cabal-dev build && ./dist/build/koans/koans -t "ParserCombinators"
+
