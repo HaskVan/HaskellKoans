@@ -10,6 +10,7 @@ tests :: [Test]
 tests = 
     [
       testDigitParser
+    , testDigitsParser
     ]
 
 --failParser :: P.Parser ()
@@ -27,3 +28,12 @@ testDigitParser = testCase "digit parser" $ do
     case result of
       Left e -> assertBool e False
       Right answer -> assertEqual "wrong parser" '5' answer
+
+testDigitsParser :: Test
+testDigitsParser = testCase "sequence of digits parser" $ do
+    -- Change parser with the correct parser to use
+    let parser = failParser "sequence of digits parser"
+    let result = P.parseOnly parser "54321"
+    case result of
+      Left e -> assertBool e False
+      Right answer -> assertEqual "wrong parser" "54321" answer
