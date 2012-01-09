@@ -7,17 +7,17 @@ import Test.HUnit (assertBool, assertEqual)
 import qualified Data.Attoparsec.Text as P
 
 tests :: [Test]
-tests = 
+tests =
     [
       testDigitParser
     , testDigitsParser
     ]
 
 --failParser :: P.Parser ()
-failParser parserName = 
-  fail $ "\n\n\t\x1B[32;1mCheck documentation\x1B[0m of \x1B[33;1m" 
-         ++ parserName 
-         ++ "\x1B[0m on:\n\t" 
+failParser parserName =
+  fail $ "\n\n\t\x1B[32;1mCheck documentation\x1B[0m of \x1B[33;1m"
+         ++ parserName
+         ++ "\x1B[0m on:\n\t"
          ++ "http://hackage.haskell.org/packages/archive/attoparsec/0.10.1.0/doc/html/Data-Attoparsec-Text.html"
 
 testDigitParser :: Test
