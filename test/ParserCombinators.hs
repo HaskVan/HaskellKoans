@@ -20,7 +20,7 @@ failParser parserName =
          ++ "\x1B[0m on:\n\t"
          ++ "http://hackage.haskell.org/packages/archive/attoparsec/0.10.1.0/doc/html/Data-Attoparsec-Text.html"
 
-assertParse :: Eq a => a -> Either a b -> Assertion
+assertParse :: (Eq a, Show a) => a -> Either String a -> Assertion
 assertParse _ (Left e) = assertBool e False
 assertParse expected (Right answer) =
   assertEqual "wrong parser" expected answer
