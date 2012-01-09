@@ -1,6 +1,25 @@
-#!/bin/bash
+#!/usr/bin/runghc
+import Control.Monad (when)
+import qualified System as S
 
-cabal install cabal-dev &&
-cabal-dev install --only-dependencies &&
-cabal-dev configure
+sh :: String -> IO ()
+sh cmd = do
+  x <- S.system cmd
+  case x of
+       S.ExitFailure _ -> error $ "[ERROR]" ++ cmd ++ " failed."
+       _ -> return ()
 
+hasCabalDev :: IO Bool
+hasCabalDev = do
+  x <- S.system "which cabal-dev"
+  case x of
+       S.ExitFailure _ -> return False
+       _ -> return True
+
+main :: IO ()
+main = do
+  hasCabalDev' <- hasCabalDev
+  when hasCabalDev' $
+    sh "cabal install cabal-dev"
+  sh "cabal-dev install --only-dependencies"
+  sh "cabal-dev configure"
