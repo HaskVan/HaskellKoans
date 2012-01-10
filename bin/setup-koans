@@ -20,6 +20,7 @@ main :: IO ()
 main = do
   hasCabalDev' <- hasCabalDev
   unless hasCabalDev' $
+    sh "cabal update"
     sh "cabal install cabal-dev"
   sh "cabal-dev install --only-dependencies"
   sh "cabal-dev configure"
