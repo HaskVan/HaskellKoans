@@ -5,6 +5,7 @@ import Test.Framework.Providers.HUnit (testCase)
 import Test.HUnit (assertBool)
 
 import qualified BasicFunctions
+import qualified Lists
 import qualified Currification
 import qualified BasicIO
 import qualified ParserCombinators
@@ -15,6 +16,7 @@ main = defaultMain tests
     tests = 
       [
         testGroup "BasicFunctions" BasicFunctions.tests
+      --, testGroup "Lists" Lists.tests
       , testGroup "Currification" Currification.tests
       , testGroup "BasicIO" BasicIO.tests
       , testGroup "ParserCombinators" ParserCombinators.tests

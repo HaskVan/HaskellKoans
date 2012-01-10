@@ -8,16 +8,7 @@ tests :: [Test]
 tests = 
     [
       testPlus
-    , testInc
     , testId
-    --, testTake
-    --, testHead
-    --, testTail
-    --, testInit
-    --, testLast
-    --, testConcat
-    --, testReplicate
-    --, testRepeat
     ]
 
 failError msg = 
@@ -27,16 +18,13 @@ failError msg =
 
 testPlus :: Test
 testPlus = testCase "+ function" $ do
-    let result = failError "+ function"
+    -- SOLUTION: Check assignment to result
+    let result = 2 + 2
     assertEqual "use plus function" 4 result 
-
-testInc :: Test
-testInc = testCase "inc function" $ do
-    let result = failError "inc function"
-    assertEqual "use inc function" 2 result 
 
 testId :: Test
 testId = testCase "id function" $ do
+    -- REPLACE: failError with correct function call
     let result = failError "id function"
     assertEqual "use id function" 1566 result
 
