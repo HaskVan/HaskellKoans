@@ -67,6 +67,7 @@ Executable koans
   Build-depends:
     base <= 5,
     attoparsec,
+    containers,
     HUnit,
     mtl,
     test-framework,

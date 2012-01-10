@@ -15,7 +15,7 @@ main = defaultMain tests
   where
     tests = 
       [
-        testGroup "BasicFunctions" BasicFunctions.tests
+        testGroup "BasicFunctions" BasicFunctions.koans
       --, testGroup "Lists" Lists.tests
       , testGroup "Currification" Currification.tests
       , testGroup "BasicIO" BasicIO.tests
