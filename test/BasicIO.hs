@@ -1,0 +1,38 @@
+module BasicIO (tests) where
+
+import Test.Framework (Test)
+import Test.Framework.Providers.HUnit (testCase)
+import Test.HUnit (assertBool, assertEqual)
+
+tests :: [Test]
+tests =
+    [
+      testReadingChar
+    , testReadingLine
+    ]
+
+failIO :: String -> IO a
+failIO fnName =
+    fail $
+      "\n\n\t\x1B[32;1mCheck documentation\x1B[0m of \x1B[33;1m"
+      ++ fnName
+      ++ "\x1B[0m on:\n\t"
+      ++ "http://hackage.haskell.org/packages/archive/base/latest/doc/html/Prelude.html"
+
+testReadingChar :: Test
+testReadingChar = testCase "getChar" $ do
+  putStrLn "Write: \"a\" to pass this test: "
+  -- NOTE: replace 'failIO' with the actual function
+  result <- failIO "getChar"
+  assertEqual ""
+              'a'
+              result
+
+testReadingLine :: Test
+testReadingLine = testCase "getLine" $ do
+    -- NOTE: replace 'failIO' with the actual function
+    result <- failIO "getLine"
+    assertEqual "Write: \"burrito\" to pass this test"
+                "burrito"
+                result
+

@@ -1,4 +1,4 @@
 #!/bin/bash
 
-cabal-dev build && ./dist/build/koans/koans -t "ParserCombinators"
+cabal-dev build && ./dist/build/koans/koans -t "ParserCombinators" --hide-successes
 
