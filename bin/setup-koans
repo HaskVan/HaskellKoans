@@ -1,5 +1,5 @@
 #!/usr/bin/runghc
-import Control.Monad (when)
+import Control.Monad (unless)
 import qualified System as S
 
 sh :: String -> IO ()
@@ -19,7 +19,7 @@ hasCabalDev = do
 main :: IO ()
 main = do
   hasCabalDev' <- hasCabalDev
-  when hasCabalDev' $
+  unless hasCabalDev' $
     sh "cabal install cabal-dev"
   sh "cabal-dev install --only-dependencies"
   sh "cabal-dev configure"
