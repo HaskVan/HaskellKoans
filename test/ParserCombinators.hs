@@ -14,6 +14,7 @@ tests =
     , testDigitsParser
     , testSymbolParser
     , testAtomParser
+    , testListParser
     ]
 
 failParser :: String -> P.Parser a
@@ -64,3 +65,14 @@ testAtomParser = testCase "atom parser" $ do
     assertParse (AStr "a/b") $ P.parseOnly parser "a/b"
     assertParse (AStr "a/b") $ P.parseOnly parser "a/b c"
     assertParse (AInt 54321) $ P.parseOnly parser "54321"
+
+data List = Nil | Cons Atom List deriving (Eq, Show)
+
+testListParser :: Test
+testListParser = testCase "list parser" $ do
+    -- Change parser with the correct parser to use
+    --
+    let parser = failParser "list parser" :: P.Parser List
+    assertParse Nil $ P.parseOnly parser "()"
+    assertParse (Cons (AInt 12) Nil) $ P.parseOnly parser "(12)"
+    assertParse (Cons (AStr "a") (Cons (AStr "b") Nil)) $ P.parseOnly parser "(a (b))"
