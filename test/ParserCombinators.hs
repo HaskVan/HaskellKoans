@@ -11,6 +11,7 @@ tests =
     [
       testDigitParser
     , testDigitsParser
+    , testSymbolParser
     , testAtomParser
     ]
 
@@ -40,13 +41,25 @@ testDigitsParser = testCase "sequence of digits parser" $ do
     let result = P.parseOnly parser "54321"
     assertParse "54321" result
 
+testSymbolParser :: Test
+testSymbolParser = testCase "symbol parser" $ do
+    -- Change parser with the correct parser to use
+    -- 
+    -- Here we say symbol is a sequence of characters that doesn't have
+    -- parenthes or spaces.
+    let parser = failParser "symbol parser" :: P.Parser String
+    assertParse "ab" $ P.parseOnly parser "ab"
+    assertParse "a/b" $ P.parseOnly parser "a/b"
+    assertParse "a/b" $ P.parseOnly parser "a/b c"
+
+data Atom = AInt Int | AStr String deriving (Eq, Show)
+
 testAtomParser :: Test
 testAtomParser = testCase "atom parser" $ do
     -- Change parser with the correct parser to use
     -- 
-    -- Here we say atom is a sequence of characters that doesn't have
-    -- parenthes or spaces.
-    let parser = failParser "atom parser" :: P.Parser String
-    assertParse "ab" $ P.parseOnly parser "ab"
-    assertParse "a/b" $ P.parseOnly parser "a/b"
-    assertParse "a/b" $ P.parseOnly parser "a/b c"
+    let parser = failParser "atom parser" :: P.Parser Atom
+    assertParse (AStr "ab") $ P.parseOnly parser "ab"
+    assertParse (AStr "a/b") $ P.parseOnly parser "a/b"
+    assertParse (AStr "a/b") $ P.parseOnly parser "a/b c"
+    assertParse (AInt 54321) $ P.parseOnly parser "54321"
