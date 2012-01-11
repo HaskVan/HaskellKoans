@@ -45,7 +45,7 @@ testDigitsParser = testCase "sequence of digits parser" $ do
 testSymbolParser :: Test
 testSymbolParser = testCase "symbol parser" $ do
     -- Change parser with the correct parser to use
-    -- 
+    --
     -- Here we say symbol is a sequence of characters that doesn't have
     -- parenthes or spaces.
     let parser = failParser "symbol parser" :: P.Parser String
@@ -58,7 +58,7 @@ data Atom = AInt Int | AStr Text deriving (Eq, Show)
 testAtomParser :: Test
 testAtomParser = testCase "atom parser" $ do
     -- Change parser with the correct parser to use
-    -- 
+    --
     let parser = failParser "atom parser" :: P.Parser Atom
     assertParse (AStr "ab") $ P.parseOnly parser "ab"
     assertParse (AStr "a/b") $ P.parseOnly parser "a/b"
