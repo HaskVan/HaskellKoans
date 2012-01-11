@@ -23,6 +23,7 @@ failParser parserName =
          ++ parserName
          ++ "\x1B[0m on:\n\t"
          ++ "http://hackage.haskell.org/packages/archive/attoparsec/latest/doc/html/Data-Attoparsec-Text.html"
+         ++ "\n\tand http://hackage.haskell.org/packages/archive/attoparsec/latest/doc/html/Data-Attoparsec-Combinator.html"
 
 assertParse :: (Eq a, Show a) => a -> Either String a -> Assertion
 assertParse _ (Left e) = assertBool e False
