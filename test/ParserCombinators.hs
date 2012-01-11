@@ -54,16 +54,16 @@ testSymbolParser = testCase "symbol parser" $ do
     assertParse "a/b" $ P.parseOnly parser "a/b"
     assertParse "a/b" $ P.parseOnly parser "a/b c"
 
-data Atom = AInt Int | AStr Text deriving (Eq, Show)
+data Atom = AInt Int | ASym Text deriving (Eq, Show)
 
 testAtomParser :: Test
 testAtomParser = testCase "atom parser" $ do
     -- Change parser with the correct parser to use
     --
     let parser = failParser "atom parser" :: P.Parser Atom
-    assertParse (AStr "ab") $ P.parseOnly parser "ab"
-    assertParse (AStr "a/b") $ P.parseOnly parser "a/b"
-    assertParse (AStr "a/b") $ P.parseOnly parser "a/b c"
+    assertParse (ASym "ab") $ P.parseOnly parser "ab"
+    assertParse (ASym "a/b") $ P.parseOnly parser "a/b"
+    assertParse (ASym "a/b") $ P.parseOnly parser "a/b c"
     assertParse (AInt 54321) $ P.parseOnly parser "54321"
 
 data List = Nil | Cons Atom List deriving (Eq, Show)
@@ -75,4 +75,4 @@ testListParser = testCase "list parser" $ do
     let parser = failParser "list parser" :: P.Parser List
     assertParse Nil $ P.parseOnly parser "()"
     assertParse (Cons (AInt 12) Nil) $ P.parseOnly parser "(12)"
-    assertParse (Cons (AStr "a") (Cons (AStr "b") Nil)) $ P.parseOnly parser "(a (b))"
+    assertParse (Cons (ASym "a") (Cons (ASym "b") Nil)) $ P.parseOnly parser "(a (b))"
