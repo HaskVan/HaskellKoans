@@ -27,6 +27,16 @@ fnMap = Map.fromList
     , ("not", functionUrl preludeUrl "not")
     , ("read", functionUrl preludeUrl "read")
     , ("reads", functionUrl preludeUrl "reads")
+    , ("drop", functionUrl preludeUrl "drop")
+    , ("take", functionUrl preludeUrl "take")
+    , ("head", functionUrl preludeUrl "head")
+    , ("tail", functionUrl preludeUrl "tail")
+    , ("init", functionUrl preludeUrl "init")
+    , ("last", functionUrl preludeUrl "last")
+    , ("concat", functionUrl preludeUrl "concat")
+    , ("replicate", functionUrl preludeUrl "replicate")
+    , ("repeat", functionUrl preludeUrl "repeat")
+    , ("iterate", functionUrl preludeUrl "iterate")
     ]
 
 getFunctionUrl :: FunctionName -> Url

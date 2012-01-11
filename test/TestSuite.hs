@@ -16,9 +16,8 @@ main = defaultMain tests
     tests = 
       [
         testGroup "BasicFunctions" BasicFunctions.koans
-      --, testGroup "Lists" Lists.tests
+      , testGroup "Lists" Lists.koans
       , testGroup "Currification" Currification.tests
       , testGroup "BasicIO" BasicIO.tests
       , testGroup "ParserCombinators" ParserCombinators.tests
       ]
-

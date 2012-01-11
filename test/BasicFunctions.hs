@@ -1,8 +1,6 @@
 {-
-This module contains exercises of the most basic functions
-in Haskell (mostly arithmetic, and trivial ones)
-
-
+This module contains koans for the most basic functions
+in Haskell 
 -}
 module BasicFunctions (koans) where
 
@@ -13,18 +11,21 @@ import Util
 koans :: [Koan]
 koans =
     [
-    -- Arithmetic Operators
+    -- * Arithmetic Operators
       koanPlus
     , koanMinus
     , koanProd
-    -- Logical Operators
+
+    -- * Logical Operators
     , koanAnd
     , koanOr
     , koanNot
-    -- Basic Parsing functions
+
+    -- * Basic Parsing functions
     , koanRead
     , koanReads
-    -- Functional utilities
+
+    -- * Functional utilities
     , koanId
     ]
 
