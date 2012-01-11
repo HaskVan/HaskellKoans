@@ -71,7 +71,8 @@ Executable koans
     HUnit,
     mtl,
     test-framework,
-    test-framework-hunit
+    test-framework-hunit,
+    text
 
   HS-source-dirs:
     test

@@ -5,6 +5,7 @@ import Test.Framework (Test)
 import Test.Framework.Providers.HUnit (testCase)
 import Test.HUnit (assertBool, assertEqual, Assertion)
 import qualified Data.Attoparsec.Text as P
+import Data.Text (Text)
 
 tests :: [Test]
 tests =
@@ -52,7 +53,7 @@ testSymbolParser = testCase "symbol parser" $ do
     assertParse "a/b" $ P.parseOnly parser "a/b"
     assertParse "a/b" $ P.parseOnly parser "a/b c"
 
-data Atom = AInt Int | AStr String deriving (Eq, Show)
+data Atom = AInt Int | AStr Text deriving (Eq, Show)
 
 testAtomParser :: Test
 testAtomParser = testCase "atom parser" $ do
