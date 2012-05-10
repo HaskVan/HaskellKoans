@@ -23,7 +23,7 @@ koans =
 
     -- * Basic Parsing functions
     , koanRead
-    , koanReads
+    --, koanReads
 
     -- * Functional utilities
     , koanId
