@@ -90,13 +90,13 @@ koanRead :: Koan
 koanRead = koan "read function" $ do
     -- REPLACE: replaceValue with correct value
     let result = replaceValue "read"
-    assertEqual "use id function" 1566 result
+    assertEqual "use read function" 1566 result
 
 koanReads :: Koan
 koanReads = koan "reads function" $ do
     -- REPLACE: replaceValue with correct value
     let result = replaceValue "reads"
-    assertEqual "use id function" [(1566, " other string")] result
+    assertEqual "use reads function" [(1566, " other string")] result
 
 ----------------------------------------------------------------------
 --
