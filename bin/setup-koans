@@ -1,6 +1,7 @@
-#!/usr/bin/runghc
+#!/usr/bin/runhaskell
 import Control.Monad (unless)
-import qualified System as S
+import qualified System.Process as S
+import qualified System.Exit as S
 
 sh :: String -> IO ()
 sh cmd = do
@@ -11,19 +12,20 @@ sh cmd = do
 
 hasCabalDev :: IO Bool
 hasCabalDev = do
-  x <- S.system "which cabal-dev"
-  case x of
+  result <- S.system "which cabal-dev"
+  case result of
        S.ExitFailure _ -> return False
        _ -> return True
 
 main :: IO ()
 main = do
-  hasCabalDev' <- hasCabalDev
-  unless hasCabalDev' $ do
+  isCabalDevPresent <- hasCabalDev
+  unless isCabalDevPresent $ do
     sh "cabal update"
     sh "cabal install cabal-dev"
-  unless hasCabalDev' $ do
-    putStrLn "add cabal binary files dir to your $PATH"
+    putStrLn ""
+    putStrLn "NOTE: Add cabal binary files dir to your $PATH"
+    putStrLn ""
     S.exitFailure
   sh "cabal-dev install --only-dependencies"
   sh "cabal-dev configure"
