@@ -1,15 +1,12 @@
 module BasicIO (tests) where
 
-import Test.Framework (Test)
-import Test.Framework.Providers.HUnit (testCase)
+import Test.Hspec (Spec, describe, it)
 import Test.HUnit (assertBool, assertEqual)
 
-tests :: [Test]
-tests =
-    [
-      testReadingChar
-    , testReadingLine
-    ]
+tests :: Spec
+tests = describe "BasicIO" $ do
+    testReadingChar
+    testReadingLine
 
 failIO :: String -> IO a
 failIO fnName =
@@ -19,8 +16,8 @@ failIO fnName =
       ++ "\x1B[0m on:\n\t"
       ++ "http://hackage.haskell.org/packages/archive/base/latest/doc/html/Prelude.html"
 
-testReadingChar :: Test
-testReadingChar = testCase "getChar" $ do
+testReadingChar :: Spec
+testReadingChar = it "getChar" $ do
   putStrLn "Write: \"a\" to pass this test: "
   -- NOTE: replace 'failIO' with the actual function
   result <- failIO "getChar"
@@ -28,8 +25,8 @@ testReadingChar = testCase "getChar" $ do
               'a'
               result
 
-testReadingLine :: Test
-testReadingLine = testCase "getLine" $ do
+testReadingLine :: Spec
+testReadingLine = it "getLine" $ do
     -- NOTE: replace 'failIO' with the actual function
     result <- failIO "getLine"
     assertEqual "Write: \"burrito\" to pass this test"

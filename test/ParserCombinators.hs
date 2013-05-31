@@ -1,21 +1,18 @@
 {-# LANGUAGE OverloadedStrings #-}
 module ParserCombinators (tests) where
 
-import Test.Framework (Test)
-import Test.Framework.Providers.HUnit (testCase)
+import Test.Hspec (Spec, describe, it)
 import Test.HUnit (assertBool, assertEqual, Assertion)
 import qualified Data.Attoparsec.Text as P
 import Data.Text (Text)
 
-tests :: [Test]
-tests =
-    [
-      testDigitParser
-    , testDigitsParser
-    , testSymbolParser
-    , testAtomParser
-    , testListParser
-    ]
+tests :: Spec
+tests = describe "ParserCombinators" $ do
+    testDigitParser
+    testDigitsParser
+    testSymbolParser
+    testAtomParser
+    testListParser
 
 failParser :: String -> P.Parser a
 failParser parserName =
@@ -30,22 +27,22 @@ assertParse _ (Left e) = assertBool e False
 assertParse expected (Right answer) =
   assertEqual "wrong parser" expected answer
 
-testDigitParser :: Test
-testDigitParser = testCase "digit parser" $ do
+testDigitParser :: Spec
+testDigitParser = it "digit parser" $ do
     -- Change parser with the correct parser to use
     let parser = failParser "digit parser" :: P.Parser Char
     let result = P.parseOnly parser "5"
     assertParse '5' result
 
-testDigitsParser :: Test
-testDigitsParser = testCase "sequence of digits parser" $ do
+testDigitsParser :: Spec
+testDigitsParser = it "sequence of digits parser" $ do
     -- Change parser with the correct parser to use
     let parser = failParser "sequence of digits parser" :: P.Parser String
     let result = P.parseOnly parser "54321"
     assertParse "54321" result
 
-testSymbolParser :: Test
-testSymbolParser = testCase "symbol parser" $ do
+testSymbolParser :: Spec
+testSymbolParser = it "symbol parser" $ do
     -- Change parser with the correct parser to use
     --
     -- Here we say symbol is a sequence of characters that doesn't have
@@ -57,8 +54,8 @@ testSymbolParser = testCase "symbol parser" $ do
 
 data Atom = AInt Int | ASym Text deriving (Eq, Show)
 
-testAtomParser :: Test
-testAtomParser = testCase "atom parser" $ do
+testAtomParser :: Spec
+testAtomParser = it "atom parser" $ do
     -- Change parser with the correct parser to use
     --
     let parser = failParser "atom parser" :: P.Parser Atom
@@ -69,8 +66,8 @@ testAtomParser = testCase "atom parser" $ do
 
 data List = Nil | LAtom Atom | Cons List List deriving (Eq, Show)
 
-testListParser :: Test
-testListParser = testCase "list parser" $ do
+testListParser :: Spec
+testListParser = it "list parser" $ do
     -- Change parser with the correct parser to use
     let parser = failParser "list parser" :: P.Parser List
     assertParse Nil $ P.parseOnly parser "()"

@@ -4,30 +4,29 @@ in Haskell
 -}
 module BasicFunctions (koans) where
 
+import Test.Hspec (Spec, describe, it)
 import Test.HUnit (assertBool, assertEqual)
 
 import Util
 
-koans :: [Koan]
-koans =
-    [
+koans :: Koan
+koans = describe "BasicFunctions" $ do
     -- * Arithmetic Operators
-      koanPlus
-    , koanMinus
-    , koanProd
+    koanPlus
+    koanMinus
+    koanProd
 
     -- * Logical Operators
-    , koanAnd
-    , koanOr
-    , koanNot
+    koanAnd
+    koanOr
+    koanNot
 
     -- * Basic Parsing functions
-    , koanRead
+    koanRead
     --, koanReads
 
     -- * Functional utilities
-    , koanId
-    ]
+    koanId
 
 ----------------------------------------------------------------------
 --

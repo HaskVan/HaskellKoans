@@ -1,10 +1,9 @@
 module Util where
 
 import qualified Data.Map as Map
-import Test.Framework (Test)
-import Test.Framework.Providers.HUnit (testCase)
+import Test.Hspec (Spec, describe, it)
 
-type Koan = Test
+type Koan = Spec
 type FunctionName = String
 type Url = String
 
@@ -63,5 +62,5 @@ replaceFunction name =
         ++ getFunctionUrl name
         ++ "\x1B[0m"
 
-koan msg action = testCase (yellow msg) action
+koan msg action = it (yellow msg) action
 

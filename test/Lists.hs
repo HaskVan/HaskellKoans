@@ -1,22 +1,21 @@
 module Lists where
 
+import Test.Hspec (Spec, describe, it)
 import Test.HUnit (assertBool, assertEqual)
 import Util
 
-koans :: [Koan]
-koans =
-    [
-      koanDrop
-    , koanTake
-    , koanHead
-    , koanTail
-    , koanInit
-    , koanLast
-    , koanConcat
-    , koanReplicate
-    , koanRepeat
-    , koanIterate
-    ]
+koans :: Koan
+koans = describe "Lists" $ do
+    koanDrop
+    koanTake
+    koanHead
+    koanTail
+    koanInit
+    koanLast
+    koanConcat
+    koanReplicate
+    koanRepeat
+    koanIterate
 
 koanDrop :: Koan
 koanDrop = koan "drop function" $ do

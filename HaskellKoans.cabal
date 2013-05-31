@@ -70,8 +70,7 @@ Executable koans
     containers,
     HUnit,
     mtl,
-    test-framework,
-    test-framework-hunit,
+    hspec,
     text
 
   HS-source-dirs:
