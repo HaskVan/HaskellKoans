@@ -1,4 +1,4 @@
-#!/usr/bin/runhaskell
+#!/usr/bin/env runhaskell
 import Control.Monad (unless)
 import qualified System.Process as S
 import qualified System.Exit as S
