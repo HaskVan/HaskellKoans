@@ -1,8 +1,2 @@
-#!/bin/bash
-
-cabal-dev build &&
-./dist/build/koans/koans "BasicFunctions" &&
-./dist/build/koans/koans "Currification" &&
-./dist/build/koans/koans "BasicIO" &&
-./dist/build/koans/koans "ParserCombinators"
-
+#!/bin/sh
+exec ./cabal-dev/bin/testloop
