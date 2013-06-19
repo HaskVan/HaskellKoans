@@ -28,4 +28,5 @@ main = do
     putStrLn ""
     S.exitFailure
   sh "cabal-dev install --only-dependencies"
-  sh "cabal-dev configure"
+  sh "cabal-dev configure --enable-test"
+  sh "cabal-dev install --reinstall"
