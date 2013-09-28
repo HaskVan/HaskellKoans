@@ -1,2 +1,2 @@
 #!/bin/sh
-exec ./cabal-dev/bin/testloop
+exec .cabal-sandbox/bin/testloop

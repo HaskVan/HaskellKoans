@@ -1,6 +1,5 @@
 ## installation
 
-    $ cabal install cabal-dev
     $ ./bin/setup-koans
 
 This may take time.

@@ -10,23 +10,9 @@ sh cmd = do
        S.ExitFailure _ -> error $ "[ERROR]" ++ cmd ++ " failed."
        _ -> return ()
 
-hasCabalDev :: IO Bool
-hasCabalDev = do
-  result <- S.system "which cabal-dev"
-  case result of
-       S.ExitFailure _ -> return False
-       _ -> return True
-
 main :: IO ()
 main = do
-  isCabalDevPresent <- hasCabalDev
-  unless isCabalDevPresent $ do
-    sh "cabal update"
-    sh "cabal install cabal-dev"
-    putStrLn ""
-    putStrLn "NOTE: Add cabal binary files dir to your $PATH"
-    putStrLn ""
-    S.exitFailure
-  sh "cabal-dev install --only-dependencies"
-  sh "cabal-dev configure --enable-test"
-  sh "cabal-dev install --reinstall"
+  sh "cabal sandbox init"
+  sh "cabal install --only-dependencies"
+  sh "cabal configure --enable-test"
+  sh "cabal install --reinstall"
