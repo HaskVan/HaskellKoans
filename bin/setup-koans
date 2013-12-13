@@ -10,9 +10,16 @@ sh cmd = do
        S.ExitFailure _ -> error $ "[ERROR]" ++ cmd ++ " failed."
        _ -> return ()
 
+cabalSandboxInit :: IO ()
+cabalSandboxInit = do
+  x <- S.system "cabal sandbox init"
+  case x of
+       S.ExitFailure _ -> error $ "[ERROR] initializing sandbox. Please ensure GHC version >= 7.8 and cabal >= 1.18 are installed and try again."
+       _ -> return ()
+
 main :: IO ()
 main = do
-  sh "cabal sandbox init"
+  cabalSandboxInit
   sh "cabal install --only-dependencies"
   sh "cabal configure --enable-test"
   sh "cabal install --reinstall"
