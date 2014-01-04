@@ -40,15 +40,15 @@ Build-type:          Simple
 -- Extra-source-files:
 
 -- Constraint on the version of Cabal needed to build this package.
-Cabal-version:       >=1.2
+Cabal-version:       >=1.18
 
 --Test-Suite koans
 --  Type: exitcode-stdio-1.0
 --
---  Main-is: 
+--  Main-is:
 --    TestSuite.hs
 --
---  HS-source-dirs: 
+--  HS-source-dirs:
 --    test
 --
 --  Build-depends:
@@ -77,6 +77,9 @@ test-suite koans
   HS-source-dirs:
     test
 
+  Default-language:
+    Haskell2010
+
   -- GHC-options: -Wall
   -- Modules not exported by this package.
   -- Other-modules:
@@ -102,3 +105,6 @@ Executable testloop
 
   HS-source-dirs:
     test
+
+  Default-language:
+    Haskell2010

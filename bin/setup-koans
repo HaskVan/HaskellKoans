@@ -10,23 +10,16 @@ sh cmd = do
        S.ExitFailure _ -> error $ "[ERROR]" ++ cmd ++ " failed."
        _ -> return ()
 
-hasCabalDev :: IO Bool
-hasCabalDev = do
-  result <- S.system "which cabal-dev"
-  case result of
-       S.ExitFailure _ -> return False
-       _ -> return True
+cabalSandboxInit :: IO ()
+cabalSandboxInit = do
+  x <- S.system "cabal sandbox init"
+  case x of
+       S.ExitFailure _ -> error $ "[ERROR] initializing sandbox. Please ensure GHC version >= 7.8 and cabal >= 1.18 are installed and try again."
+       _ -> return ()
 
 main :: IO ()
 main = do
-  isCabalDevPresent <- hasCabalDev
-  unless isCabalDevPresent $ do
-    sh "cabal update"
-    sh "cabal install cabal-dev"
-    putStrLn ""
-    putStrLn "NOTE: Add cabal binary files dir to your $PATH"
-    putStrLn ""
-    S.exitFailure
-  sh "cabal-dev install --only-dependencies"
-  sh "cabal-dev configure --enable-test"
-  sh "cabal-dev install --reinstall"
+  cabalSandboxInit
+  sh "cabal install --only-dependencies"
+  sh "cabal configure --enable-test"
+  sh "cabal install --reinstall"
