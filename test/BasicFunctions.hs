@@ -23,7 +23,7 @@ koans = describe "BasicFunctions" $ do
 
     -- * Basic Parsing functions
     koanRead
-    --, koanReads
+    koanReads
 
     -- * Functional utilities
     koanId
