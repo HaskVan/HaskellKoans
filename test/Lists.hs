@@ -22,7 +22,7 @@ koanDrop = koan "drop function" $ do
     -- REPLACE: replaceValue with correct function call
     -- using list [1..10]
     let result = replaceValue "drop"
-    assertEqual "use take function" [4,5,6,7,8,9,10] result
+    assertEqual "use drop function" [4,5,6,7,8,9,10] result
 
 koanTake :: Koan
 koanTake = koan "take function" $ do
