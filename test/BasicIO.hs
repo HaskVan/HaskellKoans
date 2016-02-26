@@ -18,18 +18,19 @@ failIO fnName =
 
 testReadingChar :: Spec
 testReadingChar = it "getChar" $ do
-  putStrLn "Write: \"a\" to pass this test: "
-  -- NOTE: replace 'failIO' with the actual function
-  result <- failIO "getChar"
-  assertEqual ""
-              'a'
-              result
+    putStrLn "Write: \"a\" to pass this test: "
+    -- NOTE: replace 'failIO' with the actual function
+    result <- failIO "getChar"
+    assertEqual ""
+                'a'
+                result
 
 testReadingLine :: Spec
 testReadingLine = it "getLine" $ do
+    putStrLn "Write: \"burrito\" to pass this test: "
     -- NOTE: replace 'failIO' with the actual function
     result <- failIO "getLine"
-    assertEqual "Write: \"burrito\" to pass this test"
+    assertEqual ""
                 "burrito"
                 result
 
