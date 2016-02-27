@@ -10,6 +10,7 @@ import qualified BasicIO
 import qualified ParserCombinators
 import System.Environment (getArgs)
 import Data.List (isInfixOf)
+import System.IO (hSetBuffering, stdin, BufferMode(NoBuffering))
 
 p :: String -> ([String], String) -> Bool
 p a ([b], _) = a == b
@@ -17,6 +18,7 @@ p _ _ = False
 
 main :: IO ()
 main = do
+  hSetBuffering stdin NoBuffering
   args <- getArgs
   let predFilter = case args of
                      (a : _) -> Just $ p a
