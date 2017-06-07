@@ -1,2 +1,10 @@
 cabal-dev/*
 dist/*
+cabal.config
+cabal.sandbox.config
+
+stack.yaml
+.stack-work
+
+.idea*
+*.iml
