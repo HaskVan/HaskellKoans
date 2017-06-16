@@ -1,3 +1,7 @@
+## prerequisites
+
+- Haskell Platform (`brew install caskroom/cask/haskell-platform` if running macOS)
+
 ## installation
 
     $ ./bin/setup-koans
