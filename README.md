@@ -1,3 +1,13 @@
+## DISCLAIMER
+
+This project has been abandoned for the past 4 years, there are other better tools for learning Haskell
+
+* Haskell From First Principles
+* Exercism.io
+
+Please, consider those before using this project
+
+
 ## installation
 
     $ ./bin/setup-koans
